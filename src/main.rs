@@ -13,12 +13,12 @@ fn main() {
 #[component]
 fn App() -> Element {
     let mut show_dialog = use_signal(|| false);
-    let mut message = use_signal(|| "hello".to_string());
+    let message = use_signal(|| "hello".to_string());
 
     rsx! {
-        // for Play CDN to try Tailwind
+        // For Play CDN to try Tailwind only for develop. Delete for production.
         script { src: asset!("https://cdn.tailwindcss.com") }
-        // for manganis
+        // For manganis. Don't delete.
         head::Link { rel: "stylesheet", href: asset!("./assets/tailwind.css") }
         div { class: "flex flex-row p-10 space-x-10",
             button {
