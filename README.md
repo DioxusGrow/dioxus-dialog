@@ -16,6 +16,7 @@ dx serve --hot-reload true
 
 - Open the browser to http://localhost:8080
 
+# Hot reloading with Tailwind CSS
 Hot reloading Tailwind CSS will work with [Tailwind CDN](https://tailwindcss.com/docs/installation/play-cdn) and Manganis using these settings.
 
 1. Create a new project from the command line:
@@ -80,8 +81,8 @@ fn App() -> Element {
 }
 ```
 
-8. If you need a local stylesheet for custom styles inside input.css.
-Insert your custom styles inside input.css:
+# If you need a local stylesheet for custom styles inside input.css.
+1. Insert your custom styles inside input.css:
 ```css
 @layer components {
   p {
@@ -98,7 +99,7 @@ Insert your custom styles inside input.css:
   }
 }
 ```
-Insert custom classes into the page:
+2. Insert custom classes into the page:
 ```rust
 rsx!{
     p { "I" }
@@ -107,5 +108,12 @@ rsx!{
     div { class: "blue", "burger" }
 }
 ```
-9. Rebuild the app:
-button r on terminal // or `dx serve --hot-reload true`
+3. Rebuild the app:
+
+button r on terminal 
+
+or 
+
+```bash
+dx serve --hot-reload true
+```
