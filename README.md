@@ -14,22 +14,30 @@ Run the following command in the root of the project to start the Dioxus dev ser
 dx serve --hot-reload true
 ```
 
-- Open the browser to http://localhost:8080# dioxus-dialog
+- Open the browser to http://localhost:8080
 
 Hot reloading Tailwind CSS will work with [Tailwind CDN](https://tailwindcss.com/docs/installation/play-cdn) and Manganis using these settings.
+
 1. Create a new project from the command line:
-`dx new -> web -> Project Name: project-name -> Tailwind -> true`
+
+```bash
+dx new -> web -> Project Name: project-name -> Tailwind -> true
+```
 You can change the platform, name, and router as needed.
 
 No changes needed to the Dioxus.toml file.
 
 2. Reinstall the CLI:
-`cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force`
+```bash
+cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force
+```
 
+```bash
 dx --version
 dioxus 0.6.0-alpha.2 (3c699aa)
+```
 
-3. Add dependencies in your Cargo.toml file:
+3. Add dependencies to your Cargo.toml file:
 ```rust
 [dependencies]
 dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["web", "router"] }
@@ -37,9 +45,17 @@ dioxus-logger = "0.5.1"
 ```
 
 4. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
+```bash
+npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
+dx serve --hot-reload true
+```
+
+5. Add the following support to main.rs inside rsx:
 ```rust
-script { src: "https://cdn.tailwindcss.com" }
-head::Link { rel: "stylesheet", href: asset!("./assets/tailwind.css") }
+rsx!{
+    script { src: "https://cdn.tailwindcss.com" }
+    head::Link { rel: "stylesheet", href: asset!("./assets/tailwind.css") }
+}
 ```
 
 Example component:
@@ -64,7 +80,7 @@ fn App() -> Element {
 }
 ```
 
-8. If you need a local stylesheet for custom styles inside input.css:
+8. If you need a local stylesheet for custom styles inside input.css.
 Insert your custom styles inside input.css:
 ```css
 @layer components {
