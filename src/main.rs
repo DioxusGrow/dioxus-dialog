@@ -69,6 +69,7 @@ fn Dialog(show: Signal<bool>, message: Signal<String>) -> Element {
                     button {
                         class: "px-2 ring-2 rounded-xl hover:bg-blue-100 shadow-xl hover:shadow-none",
                         onclick: move |_| *show.write() = false,
+                        disabled: !show(),
                         "Cancel"
                     }
                     button {

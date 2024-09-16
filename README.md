@@ -54,7 +54,7 @@ dx serve --hot-reload true
 5. Add the following support to main.rs inside rsx:
 ```rust
 rsx!{
-    script { src: "https://cdn.tailwindcss.com" }
+    script { src: asset!("https://cdn.tailwindcss.com") }
     head::Link { rel: "stylesheet", href: asset!("./assets/tailwind.css") }
 }
 ```
