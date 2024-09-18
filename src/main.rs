@@ -1,10 +1,12 @@
 #![allow(non_snake_case)]
-
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
 
+const STYLE: &str = asset!("./assets/tailwind.css");
+// Note: For development use only. Remove before production.
+const TAILWIND_CDN: &str = asset!("https://cdn.tailwindcss.com");
+
 fn main() {
-    // Init logger
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
     info!("starting app");
     launch(App);
@@ -16,10 +18,9 @@ fn App() -> Element {
     let message = use_signal(|| "hello".to_string());
 
     rsx! {
-        // For Play CDN to try Tailwind only for develop. Delete for production.
-        script { src: asset!("https://cdn.tailwindcss.com") }
-        // For manganis. Don't delete.
-        head::Link { rel: "stylesheet", href: asset!("./assets/tailwind.css") }
+        head::Link { rel: "stylesheet", href: STYLE }
+        // Note: For development use only. Remove before production.
+        script { src: TAILWIND_CDN }
         div { class: "flex flex-row p-10 space-x-10",
             button {
                 class: " ring-2 px-2 rounded-lg bg-blue-100 hover:bg-blue-200 shadow-md",
